@@ -11,10 +11,12 @@
     
     <h3>Student List</h3>
     <?php
-     $rowData = $conn->query("SELECT * FROM frome");
-      while($row=$rowData->fetch_assoc()){ ?>
-        //html sate 
+     $rowData = $conn->query("SELECT * FROM frome"); ?>
+     <table border="1" style="border-collapse: collapse;">
 
+    <?php
+      while($row=$rowData->fetch_assoc()){ ?>
+        
         <tr>
             <td><?php echo $row['id'],"<br>"; ?></td>
             <td><?php echo $row['name'],"<br>"; ?></td>
@@ -24,6 +26,7 @@
         <?php
       }
      ?>
+     </table>
 
 </body>
 </html>
