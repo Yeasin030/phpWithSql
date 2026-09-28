@@ -5,7 +5,7 @@
     $user ="root";
     $pass = "";
     $db = "newdb";
-    $conn =mysqli_connect($host, $user, $pass, $db);
+    $conn = new mysqli($host, $user, $pass, $db);
     if (!$conn) {
         die("Database connection failed :" . mysqli_connect_error());
         

@@ -1,0 +1,260 @@
+:root {
+    color-scheme: light;
+    --ink: #202a25;
+    --muted: #66736b;
+    --line: #d8e1da;
+    --paper: #ffffff;
+    --canvas: #eef3ef;
+    --green: #246b4a;
+    --green-dark: #194f37;
+    --green-wash: #e1efe6;
+    --gold: #dfa943;
+    --red: #b44539;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: #e6ece7;
+}
+
+body::before {
+    position: fixed;
+    z-index: 2;
+    inset: 0 0 auto;
+    height: 5px;
+    background: linear-gradient(90deg, var(--green) 0 78%, var(--gold) 78% 100%);
+    content: "";
+}
+
+body {
+    max-width: 1120px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 68px 36px;
+    color: var(--ink);
+    background: linear-gradient(145deg, #f8faf8 0%, var(--canvas) 78%);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+body:has(table) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: start;
+    column-gap: 24px;
+}
+
+body:has(form) {
+    max-width: 760px;
+    padding-right: 42px;
+    padding-left: 42px;
+}
+
+body > br {
+    display: none;
+}
+
+h3 {
+    margin: 0 0 24px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+body:has(table) h3 {
+    align-self: center;
+    margin: 0;
+}
+
+body:has(form) h3 {
+    margin-bottom: 26px;
+}
+
+a {
+    color: var(--green-dark);
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--green);
+}
+
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #a8cbb2;
+    outline-offset: 3px;
+}
+
+body > a[href="newEntry.php"],
+form input[type="submit"] {
+    display: inline-block;
+    border: 1px solid var(--green);
+    border-radius: 4px;
+    padding: 11px 18px;
+    color: #fff;
+    background: var(--green);
+    font: inherit;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+body > a[href="newEntry.php"]:hover,
+form input[type="submit"]:hover {
+    border-color: var(--green-dark);
+    color: #fff;
+    background: var(--green-dark);
+}
+
+table {
+    width: 100%;
+    grid-column: 1 / -1;
+    margin-top: 30px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border-radius: 5px;
+    background: var(--paper);
+    text-align: left;
+    box-shadow: 0 12px 30px rgb(32 41 35 / 7%);
+}
+
+th,
+td {
+    padding: 14px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    color: #f4f8f5;
+    background: #294d3b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+td {
+    overflow-wrap: anywhere;
+}
+
+tbody tr:hover td {
+    background: #f1f7f2;
+}
+
+td:last-child {
+    white-space: nowrap;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+td a {
+    color: var(--red);
+}
+
+form {
+    width: 100%;
+    max-width: none;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--green);
+    border-radius: 5px;
+    background: var(--paper);
+    box-shadow: 0 14px 36px rgb(32 41 35 / 8%);
+}
+
+form br {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+form input[type="text"] {
+    width: 100%;
+    min-height: 48px;
+    margin: 0 0 20px;
+    padding: 11px 13px;
+    border: 1px solid #cbd6cc;
+    border-radius: 4px;
+    color: var(--ink);
+    background: #fff;
+    font: inherit;
+}
+
+form input[type="text"]:focus {
+    border-color: var(--green);
+    outline: 3px solid var(--green-wash);
+}
+
+form input[type="submit"] {
+    margin-top: 2px;
+    text-transform: capitalize;
+}
+
+body > a[href="index.php"] {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 40px 18px;
+    }
+
+    body:has(table) {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 16px;
+    }
+
+    body:has(table) h3 {
+        margin: 0;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    body > a[href="newEntry.php"] {
+        justify-self: start;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        margin-top: 4px;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 12px;
+    }
+
+    form {
+        padding: 24px 20px;
+    }
+
+    body:has(form) {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
