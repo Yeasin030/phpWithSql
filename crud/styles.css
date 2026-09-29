@@ -1,15 +1,16 @@
 :root {
     color-scheme: light;
-    --ink: #202a25;
-    --muted: #66736b;
-    --line: #d8e1da;
+    --ink: #1d3438;
+    --muted: #63777a;
+    --line: #d4e3df;
     --paper: #ffffff;
-    --canvas: #eef3ef;
-    --green: #246b4a;
-    --green-dark: #194f37;
-    --green-wash: #e1efe6;
-    --gold: #dfa943;
-    --red: #b44539;
+    --canvas: #eef6f4;
+    --green: #167f73;
+    --green-dark: #105d59;
+    --green-wash: #def2ed;
+    --gold: #f0b649;
+    --coral: #e47e68;
+    --red: #bd4c55;
 }
 
 * {
@@ -18,7 +19,7 @@
 
 html {
     min-height: 100%;
-    background: #e6ece7;
+    background: #e7f0ed;
 }
 
 body::before {
@@ -26,7 +27,7 @@ body::before {
     z-index: 2;
     inset: 0 0 auto;
     height: 5px;
-    background: linear-gradient(90deg, var(--green) 0 78%, var(--gold) 78% 100%);
+    background: linear-gradient(90deg, var(--green) 0 68%, var(--gold) 68% 85%, var(--coral) 85% 100%);
     content: "";
 }
 
@@ -36,17 +37,10 @@ body {
     margin: 0 auto;
     padding: 68px 36px;
     color: var(--ink);
-    background: linear-gradient(145deg, #f8faf8 0%, var(--canvas) 78%);
+    background: linear-gradient(145deg, #fbfdfc 0%, var(--canvas) 72%, #fff5f1 100%);
     font-family: "Segoe UI", Tahoma, sans-serif;
     font-size: 15px;
     line-height: 1.5;
-}
-
-body:has(table) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-content: start;
-    column-gap: 24px;
 }
 
 body:has(form) {
@@ -67,11 +61,6 @@ h3 {
     line-height: 1.15;
 }
 
-body:has(table) h3 {
-    align-self: center;
-    margin: 0;
-}
-
 body:has(form) h3 {
     margin-bottom: 26px;
 }
@@ -89,11 +78,11 @@ a:hover {
 
 a:focus-visible,
 input:focus-visible {
-    outline: 3px solid #a8cbb2;
+    outline: 3px solid #8bd0c2;
     outline-offset: 3px;
 }
 
-body > a[href="newEntry.php"],
+.primary-action,
 form input[type="submit"] {
     display: inline-block;
     border: 1px solid var(--green);
@@ -108,7 +97,7 @@ form input[type="submit"] {
     transition: background-color 140ms ease, border-color 140ms ease;
 }
 
-body > a[href="newEntry.php"]:hover,
+.primary-action:hover,
 form input[type="submit"]:hover {
     border-color: var(--green-dark);
     color: #fff;
@@ -117,16 +106,13 @@ form input[type="submit"]:hover {
 
 table {
     width: 100%;
-    grid-column: 1 / -1;
-    margin-top: 30px;
-    overflow: hidden;
     border: 1px solid var(--line);
     border-collapse: separate !important;
     border-spacing: 0;
     border-radius: 5px;
     background: var(--paper);
     text-align: left;
-    box-shadow: 0 12px 30px rgb(32 41 35 / 7%);
+    box-shadow: 0 14px 34px rgb(28 67 61 / 10%);
 }
 
 th,
@@ -137,11 +123,11 @@ td {
 }
 
 th {
-    color: #f4f8f5;
-    background: #294d3b;
+    color: #f4fbf9;
+    background: #205e60;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0;
     text-transform: uppercase;
 }
 
@@ -149,8 +135,13 @@ td {
     overflow-wrap: anywhere;
 }
 
-tbody tr:hover td {
-    background: #f1f7f2;
+tbody tr:nth-child(even) td {
+    background: #f7faf9;
+}
+
+tbody tr:hover td,
+tbody tr:nth-child(even):hover td {
+    background: #eaf7f4;
 }
 
 td:last-child {
@@ -161,8 +152,116 @@ tr:last-child td {
     border-bottom: 0;
 }
 
-td a {
+.list-page {
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid #c9ded9;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.12;
+}
+
+.page-description {
+    margin: 9px 0 0;
+    color: var(--muted);
+}
+
+.primary-action {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-wrap {
+    margin-top: 28px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 14px 34px rgb(28 67 61 / 10%);
+}
+
+.table-wrap table {
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.id-cell {
+    width: 76px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.name-cell {
+    min-width: 150px;
+    font-weight: 650;
+}
+
+.edit-action,
+.delete-action {
+    display: inline-flex;
+    width: 36px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.edit-action {
+    border-color: #cde6df;
+    color: var(--green-dark);
+    background: #eff9f6;
+}
+
+.edit-action:hover {
+    border-color: var(--green);
+    color: #fff;
+    background: var(--green);
+}
+
+.delete-action {
+    border-color: #f0d4d2;
     color: var(--red);
+    background: #fff4f2;
+}
+
+.delete-action:hover {
+    border-color: var(--red);
+    color: #fff;
+    background: var(--red);
+}
+
+.action-icon {
+    line-height: 1;
+}
+
+.empty-state {
+    padding: 34px 16px;
+    color: var(--muted);
+    text-align: center;
 }
 
 form {
@@ -170,10 +269,10 @@ form {
     max-width: none;
     padding: 32px;
     border: 1px solid var(--line);
-    border-top: 4px solid var(--green);
+    border-top: 4px solid var(--coral);
     border-radius: 5px;
     background: var(--paper);
-    box-shadow: 0 14px 36px rgb(32 41 35 / 8%);
+    box-shadow: 0 14px 36px rgb(28 67 61 / 10%);
 }
 
 form br {
@@ -193,7 +292,7 @@ form input[type="text"] {
     min-height: 48px;
     margin: 0 0 20px;
     padding: 11px 13px;
-    border: 1px solid #cbd6cc;
+    border: 1px solid #cbded9;
     border-radius: 4px;
     color: var(--ink);
     background: #fff;
@@ -220,27 +319,25 @@ body > a[href="index.php"] {
         padding: 40px 18px;
     }
 
-    body:has(table) {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: 16px;
-    }
-
-    body:has(table) h3 {
-        margin: 0;
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding-bottom: 22px;
     }
 
     h3 {
         font-size: 30px;
     }
 
-    body > a[href="newEntry.php"] {
-        justify-self: start;
+    .page-header h1 {
+        font-size: 32px;
     }
 
-    table {
+    .table-wrap {
         display: block;
         overflow-x: auto;
-        margin-top: 4px;
+        margin-top: 20px;
         white-space: nowrap;
     }
 
