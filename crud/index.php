@@ -34,9 +34,10 @@
                 </thead>
                 <tbody>
                     <?php if ($rowData && $rowData->num_rows > 0) { ?>
+                    <?php $counter = 1; ?>
                         <?php while ($row = $rowData->fetch_assoc()) { ?>
                             <tr>
-                                <td class="id-cell"><?php echo htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td class="id-cell"><?php echo $counter ; ?></td>
                                 <td class="name-cell"><?php echo htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($row['phone'], ENT_QUOTES, 'UTF-8'); ?></td>
@@ -46,6 +47,7 @@
                                     <a class="delete-action" onclick="return confirm('Delete this student?')" href="studentDelete.php?id=<?php echo urlencode($row['id']); ?>" aria-label="Delete student" title="Delete student"><i class="bi bi-trash3 action-icon" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
+                            <?php $counter++; ?>
                         <?php } ?>
                     <?php } else { ?>
                         <tr>
