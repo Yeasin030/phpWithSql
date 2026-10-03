@@ -1,4 +1,4 @@
-:root {
+/* :root {
     color-scheme: light;
     --ink: #1f3028;
     --muted: #7a8980;
@@ -184,4 +184,4 @@ th:first-child, td:first-child { padding-left: 21px; }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
-}
+} */
